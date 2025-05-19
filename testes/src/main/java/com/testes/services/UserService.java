@@ -1,6 +1,7 @@
-package com.testes;
+package com.testes.services;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class UserService {
     public Usuario getUserEmail(String email) {
     	Optional<Usuario> opt = userRepository.findUserByEmail(email);
         
-    	if(opt != null) {
+    	if(Objects.nonNull(opt) && opt.isPresent()) {
     		return opt.get();
     	}
     	return null;
